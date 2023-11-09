@@ -34,14 +34,11 @@ public class Rover {
         ArrayList<Character> cardinalCompassLetters = new ArrayList<>(List.of('N', 'E', 'S', 'W'));
         int index = cardinalCompassLetters.indexOf(this.direction);
         int listLength = cardinalCompassLetters.size();
-        switch (instruction) {
-            case "L":
-                index = index - 1;
-                break;
-            case "R":
-                index = index + 1;
-                break;
-        }
+        index = switch (instruction) {
+            case "L" -> index - 1;
+            case "R" -> index + 1;
+            default -> index;
+        };
         index = index < 0 ? index + listLength : index % listLength;
         this.direction = cardinalCompassLetters.get(index);
     }

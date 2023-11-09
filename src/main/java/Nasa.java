@@ -21,12 +21,14 @@ public class Nasa {
 
     private static void moveRovers(List<String> lines) {
         if (lines != null && lines.size() > 3) {
-            int xMax = Character.getNumericValue(lines.get(0).charAt(0));
-            int yMax = Character.getNumericValue(lines.get(0).charAt(2));
+            int xMax = Integer.parseInt(lines.get(0).split(" ")[0]);
+            int yMax = Integer.parseInt(lines.get(0).split(" ")[1]);
 
             for (int i = 1; i < lines.size(); i += 2) {
-                Rover rover = new Rover(lines.get(i), lines.get(i + 1));
-                System.out.println(rover.finalPosition(xMax, yMax));
+                if(i+1<lines.size()) {
+                    Rover rover = new Rover(lines.get(i), lines.get(i + 1));
+                    System.out.println(rover.finalPosition(xMax, yMax));
+                }
             }
         }
     }
