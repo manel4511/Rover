@@ -32,9 +32,9 @@ public class Nasa {
     }
 
     public static void main(String[] args) throws IOException {
-
-            List<String> lines = readFile("input.txt");
+        if (args.length > 0) {
+            List<String> lines = readFile(args[0]);
             moveRovers(lines);
-
+        }
     }
 }
